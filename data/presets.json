@@ -1,0 +1,46 @@
+{
+	"page-title" : "Pursuit Visualizer",
+	"presets" : [
+		{
+            "title" : "Default",
+            "setOpacity" : 1,
+            "setBass" : 0,
+			"showGradient" : 0,
+            "showBars" : true,
+            "showLine" : false,
+            "showCircles" : false,
+            "showInvert" : false
+		},
+		{
+            "title" : "Custom Speedlines",
+            "setOpacity" : 1,
+            "setBass" : 0,
+			"showGradient" : 1,
+            "showBars" : false,
+            "showLine" : false,
+            "showCircles" : false,
+            "showInvert" : false
+		},
+        {
+            "title" : "Flood the screen with everything",
+            "setOpacity" : 1,
+            "setBass" : 20,
+			"showGradient" : 1,
+            "showBars" : true,
+            "showLine" : true,
+            "showCircles" : true,
+            "showInvert" : true
+		},
+        {
+            "title" : "Disco Party",
+            "setOpacity" : 0.4,
+            "setBass" : 6,
+			"showGradient" : 2,
+            "showBars" : true,
+            "showLine" : true,
+            "showCircles" : true,
+            "showInvert" : false
+		}
+	]
+
+}

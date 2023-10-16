@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pursuit Visualizer</title>
+	<link rel="shortcut icon" type="image/png" href="images/badge.png"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+	<link href="styles/default-styles.css" type="text/css" rel="stylesheet" />
+	<script src="./src/loader.js" type="module"></script>
+	<script type="module" src="./src/webcomp-loader.js"></script>
+</head>
+<body>
+<main>
+	<app-navbar data-name="APP"></app-navbar>
+
+	<div id="fullscreen">
+		<canvas width="960" height="640" id="main-canvas"></canvas>
+		<div id="controls" class="is-hidden">
+			<div class="tile is-ancestor is-inline-flex">
+				<div class="tile is-vertical is-9 is-inline-flex" id="left-controls">
+					<div class="tile is-parent is-inline-flex">
+						<div class="tile is-child p-0 my-0 is-inline-flex">
+							<button id="play-button" data-playing="no" class="button"></button>
+							<button id="fs-button" class="button">Enter Full Screen</button>
+							<button id="track-select" class="button">Select Track</button>
+							
+							<label id="preset-list" class="is-hidden">
+								<select id="preset-select">
+									<option value="Preset" id="preset" class="is-hidden" selected>Presets</option>
+									<option value="Default" id="default">Default</option>
+									<option value="Custom Speedlines" id="custom-speedlines">Visualizer Speedlines</option>
+									<option value="Everything" id="flood">Everything</option>
+									<option value="Disco" id="disco">Disco Party</option>
+								</select>
+							</label>
+						</div>
+					</div>
+					<div class="tile is-parent is-inline-flex py-0 my-0">
+						<div class="tile is-child is-inline-block">
+							<div class="is-block">
+								Volume: <input type="range" id="volume-slider" min="0" max="1" value="0.50" step="0.01">
+								<span id="volume-label">50</span>
+							</div>
+							<div class="is-block">
+								Character Opacity: <input type="range" id="opacity-slider" min="0" max="1" value="1" step="0.01">
+								<span id="opacity-label">1</span>
+							</div>
+							<div class="is-block">
+								Bass Boost: <input type="range" id="bass-slider" min="0" max="20" value="0" step="0.1">
+								<span id="bass-label">0</span>
+							</div>
+						</div>
+						<div id="vfx" class="tile is-child is-hidden is-block">
+							<input type="radio" id="original" name="speedline-type" checked><label for="original">Original Speedlines</label>
+							<br>
+							<input type="radio" id="with-gradient" name="speedline-type"><label for="with-gradient">Visualizer Speedlines with Gradient</label>
+							<br>
+							<div class="is-flex-mobile">
+								<input type="radio" id="without-gradient" name="speedline-type"><label for="without-gradient">Visualizer Speedlines without Gradient</label>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+				<div class="tile is-parent is-inline-flex">
+					<div id="vfx2" class="tile is-child is-hidden is-inline-block">
+						<input type="checkbox" id="barsCB" checked><label for="barsCB">Show Bars</label>
+    	    		    <br>
+						<input type="checkbox" id="lineCB"><label for="lineCB">Show Electric Line</label>
+    	    		    <br>
+						<input type="checkbox" id="circlesCB"><label for="circlesCB">Show Circles</label>
+						<br>
+						<input type="checkbox" id="invertCB"><label for="invertCB">Invert Colors</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<canvas width="729" height="307" id="song-select"></canvas>
+		<canvas width="960" height="640" id="cover"></canvas>
+	</div>
+	<button id="start" class="button is-large">Start</button>
+	<!-- The images are purely used for displaying in the canvas. They're instantiated here and are hidden. -->
+	<div>
+		<img src="images/gallery.png" class="image is-hidden" id="gallery" alt="gallery">
+		<img src="images/Objection.png" class="image is-hidden" id="objection" alt="objection">
+		<img src="images/speedlinesAnim.png" class="image is-hidden" id="speedlines" alt="speedlines">
+		<img src="images/speedlinesAnim2.png" class="image is-hidden" id="speedlines2" alt="speedlines2">
+		<img src="images/TextBox.png" class="image is-hidden" id="textbox" alt="textbox">
+		<img src="images/YellAJ.png" class="image is-hidden" id="yellAJ" alt="yellAJ">
+		<img src="images/YellF.png" class="image is-hidden" id="yellF" alt="yellF">
+		<img src="images/YellG.png" class="image is-hidden" id="yellG" alt="yellG">
+		<img src="images/YellGE.png" class="image is-hidden" id="yellGE" alt="yellGE">
+		<img src="images/YellME.png" class="image is-hidden" id="yellME" alt="yellME">
+		<img src="images/YellPW.png" class="image is-hidden" id="yellPW" alt="yellPW">
+		<img src="images/buttonBack.png" class="image is-hidden" id="button-back" alt="button-back">
+		<img src="images/buttonArrow.png" class="image is-hidden" id="button-arrow" alt="button-arrow">
+		<img src="images/selectSong.png" class="image is-hidden" id="select-song" alt="select-song">
+		<img src="images/option.png" class="image is-hidden" id="option" alt="option">
+		<img src="images/selected.png" class="image is-hidden" id="selected" alt="selected">
+		<img src="images/mugshotAJ.png" class="image is-hidden" id="mugshotAJ" alt="mugshotAJ">
+		<img src="images/mugshotF.png" class="image is-hidden" id="mugshotF" alt="mugshotF">
+		<img src="images/mugshotG.png" class="image is-hidden" id="mugshotG" alt="mugshotG">
+		<img src="images/mugshotGE.png" class="image is-hidden" id="mugshotGE" alt="mugshotGE">
+		<img src="images/mugshotME.png" class="image is-hidden" id="mugshotME" alt="mugshotME">
+		<img src="images/mugshotPW.png" class="image is-hidden" id="mugshotPW" alt="mugshotPW">
+		<img src="images/Point.png" class="image is-hidden" id="point" alt="point">
+	</div>
+	
+</main>
+</body>
+</html>

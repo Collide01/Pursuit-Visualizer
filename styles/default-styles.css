@@ -1,0 +1,71 @@
+@font-face {
+  font-family: ace-attorney;
+  src: url('./aa-font.ttf');
+}
+
+html, body {
+	font-family: ace-attorney;
+  margin: 0;
+  padding: 0;
+  align-content: center;
+}
+
+button, select {
+  font-family: ace-attorney;
+}
+
+#main-canvas {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+	background: black;
+}
+
+#cover {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+	background: black;
+}
+
+#song-select {
+  position: absolute;
+}
+
+#start {
+  position: absolute;
+  left: 52%;
+  top: 65%;
+}
+
+#controls {
+  color: white;
+  position: absolute;
+  bottom: 0;
+}
+
+#volume-label{
+  margin-left: 0.5rem;
+}
+#opacity-label{
+  margin-left: 0.5rem;
+}
+
+button[data-playing="yes"]:after{
+  content: "Pause";
+}
+
+button[data-playing="no"]:after{
+  content: "Play";
+}
+
+button[data-playing="objection"]:after{
+  content: "Call an objection!";
+}
+
+.has-image-centered {
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
