@@ -63,11 +63,14 @@ const init = (loadedPresets) => {
 const start = () => {
   audioData = new audio.AudioData(DEFAULTS.sound1);
   audioData.setLoop(true);
+  audioData.setVolume(0.5);
   audioData.playCurrentSound();
   audioData2 = new audio.AudioData(DEFAULTS.sound2); // This will be used for the dramatic pound sound effect
   audioData2.setLoop(false);
+  audioData2.setVolume(0.5);
   audioData3 = new audio.AudioData(DEFAULTS.sound3); // This will be used for the objection sound effects
   audioData3.setLoop(false);
+  audioData3.setVolume(0.5);
   document.querySelector("#start").classList.add("is-hidden");
   let canvasElement = document.querySelector("#main-canvas"); // hookup <canvas> element
   setupUI(canvasElement);
